@@ -38,7 +38,7 @@
 extern "C" {
 #endif
 
-#define NO_ERROR 0
+#define NO_FAULT 0
 /* deprecated defines, use NO_ERROR or custom error codes instead */
 #define STATUS_OK 0
 #define STATUS_FAIL (-1)

@@ -83,7 +83,7 @@ int16_t sps30_get_serial(char* serial) {
 
     error = sensirion_i2c_write_cmd(SPS30_I2C_ADDRESS, SPS_CMD_GET_SERIAL);
 
-    if (error != NO_ERROR) {
+    if (error != NO_FAULT) {
         return error;
     }
 
@@ -128,14 +128,14 @@ int16_t sps30_read_measurement(struct sps30_measurement* measurement) {
 
     error =
         sensirion_i2c_write_cmd(SPS30_I2C_ADDRESS, SPS_CMD_READ_MEASUREMENT);
-    if (error != NO_ERROR) {
+    if (error != NO_FAULT) {
         return error;
     }
 
     error = sensirion_i2c_read_words_as_bytes(SPS30_I2C_ADDRESS, &data[0][0],
                                               SENSIRION_NUM_WORDS(data));
 
-    if (error != NO_ERROR) {
+    if (error != NO_FAULT) {
         return error;
     }
 
@@ -159,7 +159,7 @@ int16_t sps30_get_fan_auto_cleaning_interval(uint32_t* interval_seconds) {
 
     error =
         sensirion_i2c_write_cmd(SPS30_I2C_ADDRESS, SPS_CMD_AUTOCLEAN_INTERVAL);
-    if (error != NO_ERROR) {
+    if (error != NO_FAULT) {
         return error;
     }
 
@@ -167,7 +167,7 @@ int16_t sps30_get_fan_auto_cleaning_interval(uint32_t* interval_seconds) {
 
     error = sensirion_i2c_read_words_as_bytes(SPS30_I2C_ADDRESS, data,
                                               SENSIRION_NUM_WORDS(data));
-    if (error != NO_ERROR) {
+    if (error != NO_FAULT) {
         return error;
     }
 
